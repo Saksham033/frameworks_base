@@ -239,12 +239,12 @@ public class PowerUI extends SystemUI {
                 } else {
                     mWarnings.updateLowBatteryWarning();
                 }
-                if ((plugged && !oldPlugged
+
+                if (plugged && !oldPlugged
                         && (mPlugType == BatteryManager.BATTERY_PLUGGED_AC
-                            || mPlugType == BatteryManager.BATTERY_PLUGGED_USB))
-                            || (!plugged && oldPlugged
-                            && (oldPlugType == BatteryManager.BATTERY_PLUGGED_AC
-                            || oldPlugType == BatteryManager.BATTERY_PLUGGED_USB))) {
+                            || mPlugType == BatteryManager.BATTERY_PLUGGED_USB)) {
+                    // "Wireless charging started" sound is handled by
+                    // {@link com.android.server.power.Notifier#onWirelessChargingStarted()}
                     mWarnings.notifyBatteryPlugged();
                 }
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
