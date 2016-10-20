@@ -24,6 +24,7 @@ import android.app.Fragment;
 import android.app.StatusBarManager;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
@@ -75,6 +76,30 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private ContentResolver mContentResolver;
     private View mTickerViewFromStub;
 
+    // Custom Carrier
+    private View mCustomCarrierLabel;
+    private int mShowCarrierLabel;
+
+    private final Handler mHandler = new Handler();
+
+    private class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_CARRIER),
+                    false, this, UserHandle.USER_ALL);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            updateSettings(true);
+        }
+    }
+    private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler);
+
     private SignalCallback mSignalCallback = new SignalCallback() {
         @Override
         public void setIsAirplaneMode(NetworkController.IconState icon) {
@@ -94,6 +119,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 Settings.System.STATUS_BAR_SHOW_TICKER, 1,
                 UserHandle.USER_CURRENT);
         mTickerObserver = new TickerObserver(new Handler());
+        mSettingsObserver.observe();
     }
 
     class TickerObserver extends UserContentObserver {
@@ -144,6 +170,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mSignalClusterView = mStatusBar.findViewById(R.id.signal_cluster);
         mCenterClockLayout = (LinearLayout) mStatusBar.findViewById(R.id.center_clock_layout);
         Dependency.get(DarkIconDispatcher.class).addDarkReceiver(mSignalClusterView);
+        mCustomCarrierLabel = mStatusBar.findViewById(R.id.statusbar_carrier_text);
+        updateSettings(false);
         // Default to showing until we know otherwise.
         showSystemIconArea(false);
         initEmergencyCryptkeeperText();
@@ -341,5 +369,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         } else {
             mStatusBarComponent.disableTicker();
         }
+    }
+
+    public void updateSettings(boolean animate) {
+        mShowCarrierLabel = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_CARRIER, 1,
+                UserHandle.USER_CURRENT);
     }
 }
