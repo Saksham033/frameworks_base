@@ -164,4 +164,5 @@
     <color name="ga_fab_icon_color">@*android:color/accent_material_dark</color>
     <color name="ga_fab_color_ripple">#ff7a7a7a</color>
 
+    <color name="powersave_warning_color">#ff000000</color><!-- rgb 0 0 0 -->
 </resources>
