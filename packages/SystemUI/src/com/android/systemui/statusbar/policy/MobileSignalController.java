@@ -22,8 +22,8 @@ import android.database.ContentObserver;
 import android.net.NetworkCapabilities;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.UserHandle;
+import android.os.Looper;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.telephony.PhoneStateListener;
@@ -76,8 +76,7 @@ public class MobileSignalController extends SignalController<
     private MobileIconGroup mDefaultIcons;
     private Config mConfig;
 
-    // show lte/4g switch
-    private boolean mShowLteFourGee;
+    private boolean mShow4gForLte;
 
     // TODO: Reduce number of vars passed in, if we have the NetworkController, probably don't
     // need listener lists anymore.
@@ -121,39 +120,37 @@ public class MobileSignalController extends SignalController<
         settingsObserver.observe();
     }
 
-    protected class SettingsObserver extends ContentObserver {
+    class SettingsObserver extends ContentObserver {
         SettingsObserver(Handler handler) {
             super(handler);
         }
 
         void observe() {
-           ContentResolver resolver = mContext.getContentResolver();
-           resolver.registerContentObserver(Settings.System.getUriFor(
-                  Settings.System.SHOW_LTE_FOURGEE),
-                  false, this, UserHandle.USER_ALL);
-           updateSettings();
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.SHOW_FOURG_ICON), false,
+                    this, UserHandle.USER_ALL);
+            updateSettings();
         }
 
+        /*
+         *  @hide
+         */
         @Override
-        public void onChange(boolean selfChange, Uri uri) {
-            super.onChange(selfChange, uri);
-            if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.SHOW_LTE_FOURGEE))) {
-                    mShowLteFourGee = Settings.System.getIntForUser(
-                            mContext.getContentResolver(),
-                            Settings.System.SHOW_LTE_FOURGEE,
-                            0, UserHandle.USER_CURRENT) == 1;
-                    mapIconSets();
-                    updateTelephony();
-            }
+        public void onChange(boolean selfChange) {
             updateSettings();
         }
     }
 
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
-        boolean mShowLteFourGee = Settings.System.getIntForUser(resolver,
-                Settings.System.SHOW_LTE_FOURGEE, 0, UserHandle.USER_CURRENT) == 1;
+
+        mShow4gForLte = Settings.System.getIntForUser(resolver,
+                Settings.System.SHOW_FOURG_ICON, 0,
+                UserHandle.USER_CURRENT) == 1;
+
+        mapIconSets();
+        updateTelephony();
     }
 
     public void setConfiguration(Config config) {
@@ -261,8 +258,12 @@ public class MobileSignalController extends SignalController<
         }
         mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_HSPAP, hGroup);
 
+<<<<<<< HEAD
         if (Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.SHOW_LTE_FOURGEE, 0) == 1) {
+=======
+        if (mShow4gForLte) {
+>>>>>>> 9fff6de2507... Allow using 4G icon instead LTE [1/2]
             mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE, TelephonyIcons.FOUR_G);
             if (mConfig.hideLtePlus) {
                 mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
