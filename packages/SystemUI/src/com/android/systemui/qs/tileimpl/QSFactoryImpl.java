@@ -105,6 +105,7 @@ public class QSFactoryImpl implements QSFactory {
         else if (tileSpec.equals("assist")) return new GoogleAssistTile(mHost);
         else if (tileSpec.equals("voiceassist")) return new GoogleVoiceAssistTile(mHost);
         else if (tileSpec.equals("google")) return new GoogleNowTile(mHost);
+        else if (tileSpec.equals("reboot")) return new RebootTile(mHost);
         // Intent tiles.
         else if (tileSpec.startsWith(IntentTile.PREFIX)) return IntentTile.create(mHost, tileSpec);
         else if (tileSpec.startsWith(CustomTile.PREFIX)) return CustomTile.create(mHost, tileSpec);
