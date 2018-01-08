@@ -4666,7 +4666,18 @@ public final class Settings {
         public static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
 
         /**
+<<<<<<< HEAD
          * location of the clear all rectents button
+=======
+         * Whether to display the 4g or lte network icon in the statusbar
+         * @hide
+         */
+        public static final String SHOW_LTE_FOURGEE = "show_lte_fourgee";
+
+        /**
+         * Whether to display the reboot option in the power menu
+         *
+>>>>>>> 5aca72e9418... Show 4G instead of LTE switch
          * @hide
          */
         public static final String  RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
