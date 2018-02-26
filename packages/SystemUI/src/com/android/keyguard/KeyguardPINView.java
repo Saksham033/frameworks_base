@@ -52,6 +52,8 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
         this(context, null);
     }
 
+    private final int userId = KeyguardUpdateMonitor.getCurrentUser();
+    
     public KeyguardPINView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mAppearAnimationUtils = new AppearAnimationUtils(context);
