@@ -4773,7 +4773,15 @@ public final class Settings {
          */
         public static final String ALARM_BLOCKING_ENABLED = "alarm_blocking_enabled";
 
-        /** End of CANDY system settings**/
+        /**
+         * Whether to show the kill app button in notification guts
+         *
+         * @hide
+         */
+        public static final String NOTIFICATION_GUTS_KILL_APP_BUTTON =
+                "notification_guts_kill_app_button";
+
+        /** End of LLUVIA system settings**/
 
         /**
          * Whether to change the transparency of the qs panel
