@@ -6481,12 +6481,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.Secure.STATUS_BAR_BATTERY_STYLE))) {
                 updateBatterySettings();
             } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.AMBIENT_DOZE_AUTO_BRIGHTNESS))) {
-                updateDozeBrightness();
-            } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.LAST_DOZE_AUTO_BRIGHTNESS))) {
-                updateDozeBrightness();
-            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.SYSTEM_UI_THEME))) {
                 updateTheme();
             } else if (uri.equals(Settings.Secure.getUriFor(
@@ -6512,7 +6506,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateQsPanelResources();
             setUseLessBoringHeadsUp();
             updateRecentsMode();
-            updateDozeBrightness();
             setForceAmbient();
             updateClockPosition();
             updateBatterySettings();
@@ -6530,15 +6523,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         if (mQuickStatusBarHeader != null) {
             mQuickStatusBarHeader.updateBatterySettings();
         }
-    }
-
-    private void updateDozeBrightness() {
-        int defaultDozeBrightness = mContext.getResources().getInteger(
-                com.android.internal.R.integer.config_screenBrightnessDoze);
-        int lastValue = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.LAST_DOZE_AUTO_BRIGHTNESS, defaultDozeBrightness,
-                UserHandle.USER_CURRENT);
-        mStatusBarWindowManager.updateDozeBrightness(lastValue);
     }
 
     private void setStatusBarWindowViewOptions() {
