@@ -899,6 +899,13 @@ final class DefaultPermissionGrantPolicy {
                 grantRuntimePermissionsLPw(conpro2Package, STORAGE_PERMISSIONS, true, userId);
             }
             mService.mSettings.onDefaultRuntimePermissionsGrantedLPr(userId);
+
+            // nexuslauncher
+            PackageParser.Package googlenexuslauncherPackage = getSystemPackageLPr(
+                    "com.google.android.apps.nexuslauncher");
+            if (googlenexuslauncherPackage != null && doesPackageSupportRuntimePermissions(googlenexuslauncherPackage)) {
+                grantRuntimePermissionsLPw(googlenexuslauncherPackage, STORAGE_PERMISSIONS, true, userId);
+            }
         }
     }
 
