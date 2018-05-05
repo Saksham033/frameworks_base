@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.internal.util.gzosp;
+package com.android.internal.util.lluvia;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -36,7 +36,7 @@ import android.view.WindowManager;
 import java.util.List;
 import java.util.Locale;
 
-public class GzospUtils {
+public class LLuviaUtils {
 
     private static int sDeviceType = -1;
     private static final int DEVICE_PHONE = 0;

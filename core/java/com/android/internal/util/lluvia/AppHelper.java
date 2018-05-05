@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.android.internal.util.gzosp;
+package com.android.internal.util.lluvia;
 
 import android.content.Context;
 import android.content.Intent;
