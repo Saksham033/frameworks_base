@@ -21,7 +21,7 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.service.quicksettings.Tile;
 
-import com.android.internal.util.candy.CandyUtils;
+import com.android.internal.util.lluvia.LLuviaUtils;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
@@ -69,7 +69,7 @@ public class ScreenshotTile extends QSTileImpl<BooleanState> {
         try {
              Thread.sleep(1000); //1s
         } catch (InterruptedException ie) {}
-        CandyUtils.takeScreenshot(mRegion ? false : true);
+        LLuviaUtils.takeScreenshot(mRegion ? false : true);
     }
 
     @Override

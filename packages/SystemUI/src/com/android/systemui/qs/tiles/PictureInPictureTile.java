@@ -22,7 +22,7 @@ import android.content.Intent;
 import android.service.quicksettings.Tile;
 import android.widget.Toast;
 
-import com.android.internal.util.candy.CandyUtils;
+import com.android.internal.util.lluvia.LLuviaUtils;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
@@ -58,7 +58,7 @@ public class PictureInPictureTile extends QSTileImpl<BooleanState> {
                     R.string.quick_settings_pip_tile_app_na), Toast.LENGTH_LONG).show();
             return;
         }
-        CandyUtils.sendKeycode(171);
+        LLuviaUtils.sendKeycode(171);
     }
 
     @Override

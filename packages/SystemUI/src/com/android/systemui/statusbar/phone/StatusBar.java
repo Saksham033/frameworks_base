@@ -6597,9 +6597,9 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
     };
 
-    private CandySettingsObserver mCandySettingsObserver = new CandySettingsObserver(mHandler);
+    private LLuviaSettingsObserver mLLuviaSettingsObserver = new LLuviaSettingsObserver(mHandler);
 
-    private class CandySettingsObserver extends ContentObserver {
+    private class LLuviaSettingsObserver extends ContentObserver {
        LLuviaSettingsObserver(Handler handler) {
             super(handler);
         }
