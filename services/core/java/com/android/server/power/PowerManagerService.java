@@ -115,8 +115,6 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import vendor.candy.power.V1_0.CandyPowerHint;
-
 import static android.os.PowerManagerInternal.WAKEFULNESS_ASLEEP;
 import static android.os.PowerManagerInternal.WAKEFULNESS_AWAKE;
 import static android.os.PowerManagerInternal.WAKEFULNESS_DOZING;
@@ -2476,9 +2474,6 @@ public final class PowerManagerService extends SystemService
         // Stop dream.
         if (isDreaming) {
             mDreamManager.stopDream(false /*immediate*/);
-
-            // notify power-HAL we transition away from dozing/dreaming
-            powerHintInternal(CandyPowerHint.DOZING, 0);
         }
     }
 
