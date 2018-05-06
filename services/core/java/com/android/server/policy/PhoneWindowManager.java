@@ -250,7 +250,7 @@ import com.android.internal.policy.IKeyguardService;
 import com.android.internal.policy.IShortcutService;
 import com.android.internal.policy.PhoneWindow;
 import com.android.internal.statusbar.IStatusBarService;
-import com.android.internal.util.candy.CandyUtils;
+import com.android.internal.util.lluvia.LLuviaUtils;
 import com.android.internal.util.ScreenShapeHelper;
 import com.android.internal.utils.du.ActionHandler;
 import com.android.internal.utils.du.DUActionUtils;
@@ -1029,7 +1029,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 }
                 case MSG_TOGGLE_TORCH:
                     performHapticFeedbackLw(null, HapticFeedbackConstants.LONG_PRESS, true);
-                    CandyUtils.toggleCameraFlash();
+                    LLuviaUtils.toggleCameraFlash();
                 case HardkeyActionHandler.MSG_FIRE_HOME:
                     launchHomeFromHotKey();
                     break;
@@ -1670,7 +1670,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             case MULTI_PRESS_POWER_NOTHING:
                 if ((mTorchActionMode == 1) && (!isScreenOn() || isDozeMode())) {
                     performHapticFeedbackLw(null, HapticFeedbackConstants.LONG_PRESS, true);
-                    CandyUtils.toggleCameraFlash();
+                    LLuviaUtils.toggleCameraFlash();
                 }
                 break;
             case MULTI_PRESS_POWER_THEATER_MODE:
@@ -9031,13 +9031,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     public void sendCustomAction(Intent intent) {
         String action = intent.getAction();
         if (action != null) {
-            if (CandyUtils.INTENT_SCREENSHOT.equals(action)) {
+            if (LLuviaUtils.INTENT_SCREENSHOT.equals(action)) {
                 mContext.enforceCallingOrSelfPermission(Manifest.permission.ACCESS_SURFACE_FLINGER,
                         TAG + "sendCustomAction permission denied");
                 mHandler.removeCallbacks(mScreenshotRunnable);
                 mScreenshotRunnable.setScreenshotType(TAKE_SCREENSHOT_FULLSCREEN);
                 mHandler.post(mScreenshotRunnable);
-            } else if (CandyUtils.INTENT_REGION_SCREENSHOT.equals(action)) {
+            } else if (LLuviaUtils.INTENT_REGION_SCREENSHOT.equals(action)) {
                 mContext.enforceCallingOrSelfPermission(Manifest.permission.ACCESS_SURFACE_FLINGER,
                         TAG + "sendCustomAction permission denied");
                 mHandler.removeCallbacks(mScreenshotRunnable);
