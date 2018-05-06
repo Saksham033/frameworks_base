@@ -305,11 +305,7 @@ public class AudioService extends IAudioService.Stub
         15, // STREAM_MUSIC
         7,  // STREAM_ALARM
         7,  // STREAM_NOTIFICATION
-<<<<<<< HEAD
         30, // STREAM_BLUETOOTH_SCO
-=======
-        15, // STREAM_BLUETOOTH_SCO
->>>>>>> dd4085ed62e... Merge "[1/2] base: Live Volume Steps" into c8.1
         7,  // STREAM_SYSTEM_ENFORCED
         15, // STREAM_DTMF
         15, // STREAM_TTS
