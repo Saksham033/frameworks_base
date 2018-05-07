@@ -4608,12 +4608,12 @@ message MetricsEvent {
     // GZOSP custom constants
     GZOSP = 1500;
 
-    // CandyRoms custom constants
-    // Candy
-    CANDY = 1501;
+    // lluviaos custom constants
+    // LLuvia
+    LLUVIA = 1501;
 
-    // CandyShop
-    CANDYSHOP = 1502;
+    // Tormenta
+    TORMENTA = 1502;
 
     // Custom Quick Settings tiles
     CUSTOM_QUICK_TILES = 1503;
