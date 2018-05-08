@@ -2418,7 +2418,7 @@ public final class PowerManagerService extends SystemService
                 }
 
                 // notify power-HAL we transition into dozing/dreaming
-                powerHintInternal(CandyPowerHint.DOZING, 1);
+                powerHintInternal(LineagePowerHint.DOZING, 1);
             }
 
             // If preconditions changed, wait for the next iteration to determine
