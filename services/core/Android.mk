@@ -24,7 +24,7 @@ LOCAL_JAVA_LIBRARIES := \
     android.hardware.tv.cec-V1.0-java \
     android.hidl.manager-V1.0-java \
     org.dirtyunicorns.utils \
-    vendor.lineage.power-V1.0-java
+    vendor.candy.power-V1.0-java
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     time_zone_distro \
