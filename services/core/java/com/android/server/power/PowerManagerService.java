@@ -2414,8 +2414,6 @@ public final class PowerManagerService extends SystemService
                     Slog.i(TAG, "Dreaming...");
                 }
 
-                // notify power-HAL we transition into dozing/dreaming
-                powerHintInternal(CandyPowerHint.DOZING, 1);
             }
 
             // If preconditions changed, wait for the next iteration to determine
