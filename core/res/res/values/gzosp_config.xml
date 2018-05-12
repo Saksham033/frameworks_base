@@ -76,4 +76,8 @@
     <!-- Doze always on default value -->
     <bool name="config_dozeAlwaysOnDisplayEnabledDefault">false</bool>
 
+    <!-- Full screen aspect ratio --> 
+    <bool name="config_haveHigherAspectRatioScreen">false</bool> 
+    <item name="config_screenAspectRatio" format="float" type="dimen">2.1</item>
+
 </resources>
