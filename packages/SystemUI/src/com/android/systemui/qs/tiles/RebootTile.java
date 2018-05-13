@@ -84,11 +84,7 @@ public class RebootTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-<<<<<<< HEAD
         return MetricsEvent.CUSTOM_QUICK_TILES;
-=======
-        return MetricsEvent.VALIDUS;
->>>>>>> 4dcdfde52d6... Add Reboot/Recovery QS Tile
     }
 
     @Override
