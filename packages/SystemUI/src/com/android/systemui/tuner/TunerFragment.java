@@ -55,7 +55,7 @@ public class TunerFragment extends PreferenceFragment {
         final ContentResolver resolver = getActivity().getContentResolver();
 
         mShowLteFourGee = (SwitchPreference) findPreference(SHOW_LTE_FOURGEE);
-        if (Utils.isWifiOnly(getActivity())) {
+        if (LLuviaUtils.isWifiOnly(getActivity())) {
             prefSet.removePreference(mShowLteFourGee);
         } else {
             mShowLteFourGee.setChecked((Settings.System.getInt(resolver,
@@ -101,7 +101,8 @@ public class TunerFragment extends PreferenceFragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-
+    }
+    
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if  (preference == mShowLteFourGee) {
