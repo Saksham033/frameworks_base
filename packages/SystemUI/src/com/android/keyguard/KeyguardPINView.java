@@ -46,8 +46,6 @@ public class KeyguardPINView extends KeyguardPinBasedInputView {
     private View[][] mViews;
     private final KeyguardUpdateMonitor mKeyguardUpdateMonitor;
 
-    private final int userId = KeyguardUpdateMonitor.getCurrentUser();
-
     public KeyguardPINView(Context context) {
         this(context, null);
     }

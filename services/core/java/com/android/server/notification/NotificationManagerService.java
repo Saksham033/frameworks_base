@@ -4264,7 +4264,7 @@ public class NotificationManagerService extends SystemService {
                 || isLedNotificationForcedOn(record);
         if (record.getLight() != null && aboveThresholdWithLight
                 && ((record.getSuppressedVisualEffects()
-                & NotificationListenerService.SUPPRESSED_EFFECT_SCREEN_OFF) == 0){
+                & NotificationListenerService.SUPPRESSED_EFFECT_SCREEN_OFF) == 0)) {
             mLights.add(key);
             updateLightsLocked();
             if (mUseAttentionLight) {
