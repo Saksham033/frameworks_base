@@ -258,12 +258,7 @@ public class MobileSignalController extends SignalController<
         }
         mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_HSPAP, hGroup);
 
-<<<<<<< HEAD
-        if (Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.SHOW_LTE_FOURGEE, 0) == 1) {
-=======
         if (mShow4gForLte) {
->>>>>>> 9fff6de2507... Allow using 4G icon instead LTE [1/2]
             mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE, TelephonyIcons.FOUR_G);
             if (mConfig.hideLtePlus) {
                 mNetworkToIconLookup.put(TelephonyManager.NETWORK_TYPE_LTE_CA,
