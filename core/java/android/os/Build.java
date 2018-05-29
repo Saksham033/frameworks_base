@@ -59,10 +59,7 @@ public class Build {
 
     /** The vendor patch level. */
     public static final String VENDOR_PATCH_LEVEL = getString("ro.vendor.patch.level");
-
-    /** The build date */
-    public static final String DATE = getString("ro.build.date");
-
+    
     /**
      * The build date
      * @hide
